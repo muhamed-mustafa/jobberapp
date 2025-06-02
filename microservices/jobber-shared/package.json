@@ -19,7 +19,7 @@
   "author": "Muhammed Mustafa",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/muhamed-mustafa/jobberapp/tree/main/microservices/jobber-shared"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
