@@ -1,4 +1,5 @@
 {
+  "name": "@muhamed-mustafa/jobber-shared",
   "version": "0.0.1",
   "license": "MIT",
   "types": "./src/index.d.ts",
@@ -15,14 +16,13 @@
     "trailingComma": "es5"
   },
   "keywords": [],
-  "name": "jobber-shared",
   "author": "Muhammed Mustafa",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/muhamed-mustafa/jobberapp/tree/main/microservices/jobber-shared"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/"
   },
   "files": [
     "build",
