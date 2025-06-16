@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^9.0.2",
-    "@muhamed-mustafa/jobber-shared": "^0.0.2",
+    "@muhamed-mustafa/jobber-shared": "^0.0.3",
     "amqplib": "^0.10.8",
     "ejs": "^3.1.10",
     "elastic-apm-node": "^4.13.0",

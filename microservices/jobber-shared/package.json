@@ -2,7 +2,7 @@
   "name": "@muhamed-mustafa/jobber-shared",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "description": "Helpers library for Jobber app",
   "scripts": {
@@ -31,8 +31,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./src/index.js"
+      "import": "./build/src/index.js",
+      "require": "./build/src/index.js"
     }
   },
   "dependencies": {
