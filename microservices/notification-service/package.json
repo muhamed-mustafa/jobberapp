@@ -24,6 +24,7 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
     "jest": "^30.0.0",
+    "nodemon": "^3.1.10",
     "prettier": "^3.5.3",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
@@ -32,7 +33,7 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^9.0.2",
-    "@muhamed-mustafa/jobber-shared": "^0.0.1",
+    "@muhamed-mustafa/jobber-shared": "^0.0.2",
     "amqplib": "^0.10.8",
     "ejs": "^3.1.10",
     "elastic-apm-node": "^4.13.0",

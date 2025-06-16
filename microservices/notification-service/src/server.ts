@@ -2,6 +2,7 @@ import 'express-async-errors';
 import http from 'http';
 import { Application } from 'express';
 import { Logger } from 'winston';
+import { Channel } from 'amqplib';
 import { winstonLogger } from '@muhamed-mustafa/jobber-shared';
 import { config } from '@notifications/config';
 import { ElasticsearchService } from '@notifications/elasticsearch';

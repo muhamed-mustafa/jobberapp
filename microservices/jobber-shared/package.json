@@ -1,9 +1,9 @@
 {
   "name": "@muhamed-mustafa/jobber-shared",
   "main": "build/src/index.js",
-  "version": "0.0.2",
+  "types": "build/src/index.d.ts",
+  "version": "0.0.3",
   "license": "MIT",
-  "types": "./src/index.d.ts",
   "description": "Helpers library for Jobber app",
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm && tsc --outDir build/src && node scripts/build-package.js",
