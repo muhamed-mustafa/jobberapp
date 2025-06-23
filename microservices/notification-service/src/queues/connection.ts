@@ -15,7 +15,7 @@ export class QueueConnection {
   public async connect(): Promise<Channel | undefined> {
     try {
       const connection = await connect(config.RABBITMQ_ENDPOINT!);
-      connection.createChannel();
+      this.channel = await connection.createChannel();
       this.logger.info('Connected to RabbitMQ successfully');
       this.setupGracefulShutdown();
       return this.channel;
@@ -38,5 +38,9 @@ export class QueueConnection {
     } catch (error) {
       this.logger.error('Error closing RabbitMQ connection:', error as Error);
     }
+  }
+
+  public getChannel(): Channel | undefined {
+    return this.channel;
   }
 }
