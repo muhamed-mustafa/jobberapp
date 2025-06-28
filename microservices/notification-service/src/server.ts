@@ -10,6 +10,8 @@ import healthRoute from '@notifications/routes';
 import { QueueConnection } from '@notifications/queues/connection';
 import { EmailConsumer } from '@notifications/queues/email.consumer';
 import { QueueConfig } from '@notifications/types/queue-config';
+import { EmailMessageHandler } from '@notifications/handlers/email-handler';
+import { OrderMessageHandler } from '@notifications/handlers/order-handler';
 
 export class NotificationServer {
   private app: Application;
@@ -31,7 +33,9 @@ export class NotificationServer {
           exchange: cfg.exchange,
           routingKey: cfg.routingKey,
           queue: cfg.queue,
-          loggerLabel: cfg.loggerLabel
+          loggerLabel: cfg.loggerLabel,
+          message: cfg.message,
+          handle: cfg.handle
         })
     );
   }
@@ -42,13 +46,17 @@ export class NotificationServer {
         exchange: 'jobber-email-notification',
         routingKey: 'auth-email',
         queue: 'auth-email-queue',
-        loggerLabel: 'AuthEmailConsumer'
+        loggerLabel: 'AuthEmailConsumer',
+        message: { receiverEmail: `${config.CLIENT_URL}`, verifyLink: `${config.CLIENT_URL}/verify-email?token=`, template: 'verifyEmail' },
+        handle: new EmailMessageHandler()
       },
       {
         exchange: 'jobber-order-notification',
         routingKey: 'order-email',
         queue: 'order-email-queue',
-        loggerLabel: 'OrderEmailConsumer'
+        loggerLabel: 'OrderEmailConsumer',
+        message: {},
+        handle: new OrderMessageHandler()
       }
     ];
   }
@@ -80,7 +88,7 @@ export class NotificationServer {
   }
 
   private publishStartupMessage(channel: Channel, exchange: string, routingKey: string): void {
-    const message = JSON.stringify({ name: 'Jobber', service: 'Notification Service' });
+    const message = JSON.stringify(this.consumers.find((consumer) => consumer.routingKey === routingKey)!.message);
     channel.publish(exchange, routingKey, Buffer.from(message));
     this.logger.info(`Startup message published to "${routingKey}" on "${exchange}"`);
   }

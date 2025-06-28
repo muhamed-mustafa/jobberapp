@@ -6,6 +6,9 @@ class Config {
   public RABBITMQ_ENDPOINT: string | undefined;
   public ELASTIC_SEARCH_URL: string | undefined;
   public PORT: string | undefined;
+  public SMTP_HOST: string | undefined;
+  public SMTP_PORT: string | undefined;
+
 
   constructor() {
     this.NODE_ENV = process.env.NODE_ENV;
@@ -15,6 +18,8 @@ class Config {
     this.RABBITMQ_ENDPOINT = process.env.RABBITMQ_ENDPOINT;
     this.ELASTIC_SEARCH_URL = process.env.ELASTIC_SEARCH_URL;
     this.PORT = process.env.PORT;
+    this.SMTP_HOST = process.env.SMTP_HOST;
+    this.SMTP_PORT = process.env.SMTP_PORT;
   }
 
   public validateConfig(): void {
