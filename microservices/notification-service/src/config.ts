@@ -8,6 +8,7 @@ class Config {
   public PORT: string | undefined;
   public SMTP_HOST: string | undefined;
   public SMTP_PORT: string | undefined;
+  public email: string | undefined;
 
 
   constructor() {
@@ -20,6 +21,7 @@ class Config {
     this.PORT = process.env.PORT;
     this.SMTP_HOST = process.env.SMTP_HOST;
     this.SMTP_PORT = process.env.SMTP_PORT;
+    this.email = process.env.email;
   }
 
   public validateConfig(): void {

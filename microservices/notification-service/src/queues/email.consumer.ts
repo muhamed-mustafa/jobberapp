@@ -1,9 +1,8 @@
 import { Channel, ConsumeMessage } from 'amqplib';
 import { config } from '@notifications/config';
-import { IEmailLocals, IEmailMessageDetails, winstonLogger } from '@muhamed-mustafa/jobber-shared';
+import { IEmailMessageDetails, winstonLogger } from '@muhamed-mustafa/jobber-shared';
 import { QueueConnection } from '@notifications/queues/connection';
 import type { Logger } from 'winston';
-import { EmailService } from './mail.transport';
 import { MessageHandler } from '@notifications/interfaces/message-handler.interface';
 
 export class EmailConsumer {
@@ -15,7 +14,6 @@ export class EmailConsumer {
   private readonly handler: MessageHandler;
   private readonly connection: QueueConnection;
   private channel!: Channel;
-  private emailService: EmailService = new EmailService();
 
   constructor({
     exchange,
@@ -30,7 +28,7 @@ export class EmailConsumer {
     queue: string;
     loggerLabel: string;
     message?: IEmailMessageDetails;
-    handle: MessageHandler;
+    handle: MessageHandler | any;
   }) {
     this.exchange = exchange;
     this.routingKey = routingKey;

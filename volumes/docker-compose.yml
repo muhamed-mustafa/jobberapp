@@ -92,6 +92,29 @@ services:
     environment:
       - ELASTICSEARCH_HOSTS=["http://elasticsearch:9200"]
 
+  notifications:
+    container_name: notifications
+    build:
+      context: ../microservices/notification-service
+      dockerfile: Dockerfile.dev
+    # restart: always
+    ports:
+      - 4001:4001
+    env_file:
+      - ../microservices/notification-service/.env
+    environment:
+      - ENABLE_APM=1
+      - NODE_ENV=development
+      - CLIENT_URL=http://localhost:3000
+      - RABBITMQ_ENDPOINT=amqp://jobber:jobber@rabbitmq_container:5672
+      - SENDER_EMAIL=ava.oreilly3@ethereal.email
+      - SENDER_EMAIL_PASSWORD=jPUUy8u8KJJAmZCXwH
+      - ELASTIC_SEARCH_URL=http://elastic:admin1234@elasticsearch:9200
+      - ELASTIC_APM_SERVER_URL=http://apm_server_container:8200
+      - ELASTIC_APM_SECRET_TOKEN=
+    depends_on:
+      - elasticsearch
+
 networks:
   elastic:
     name: elastic # This allows other services (like Kibana) to talk to Elasticsearch using the network name (elasticsearch).

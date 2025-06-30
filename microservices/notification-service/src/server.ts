@@ -11,7 +11,7 @@ import { QueueConnection } from '@notifications/queues/connection';
 import { EmailConsumer } from '@notifications/queues/email.consumer';
 import { QueueConfig } from '@notifications/types/queue-config';
 import { EmailMessageHandler } from '@notifications/handlers/email-handler';
-import { OrderMessageHandler } from '@notifications/handlers/order-handler';
+// import { OrderMessageHandler } from '@notifications/handlers/order-handler';
 
 export class NotificationServer {
   private app: Application;
@@ -47,17 +47,17 @@ export class NotificationServer {
         routingKey: 'auth-email',
         queue: 'auth-email-queue',
         loggerLabel: 'AuthEmailConsumer',
-        message: { receiverEmail: `${config.CLIENT_URL}`, verifyLink: `${config.CLIENT_URL}/verify-email?token=`, template: 'verifyEmail' },
+        message: { receiverEmail: `${config.email}`, verifyLink: `${config.CLIENT_URL}/verify-email?token=`, template: 'verifyEmail' },
         handle: new EmailMessageHandler()
       },
-      {
-        exchange: 'jobber-order-notification',
-        routingKey: 'order-email',
-        queue: 'order-email-queue',
-        loggerLabel: 'OrderEmailConsumer',
-        message: {},
-        handle: new OrderMessageHandler()
-      }
+      // {
+      //   exchange: 'jobber-order-notification',
+      //   routingKey: 'order-email',
+      //   queue: 'order-email-queue',
+      //   loggerLabel: 'OrderEmailConsumer',
+      //   message: {},
+      //   handle: new OrderMessageHandler()
+      // }
     ];
   }
   private setupRoutes(): void {

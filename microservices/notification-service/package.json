@@ -5,13 +5,14 @@
   "main": "app.js",
   "scripts": {
     "dev": "tsx watch --env-file .env  -r tsconfig-paths/register src/app.ts | pino-pretty -c",
-    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json && ts-node src/tools/copyAssets.ts"
+    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json && ts-node src/tools/copyAssets.ts",
+    "test": "jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=false"
   },
   "keywords": [],
   "author": "Muhammed Mustafa",
   "license": "ISC",
   "devDependencies": {
-    "@jest/types": "^30.0.0",
+    "@jest/types": "^30.0.1",
     "@types/amqplib": "^0.10.7",
     "@types/email-templates": "^10.0.4",
     "@types/express": "^5.0.3",
@@ -23,7 +24,7 @@
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
-    "jest": "^30.0.0",
+    "jest": "^30.0.3",
     "nodemon": "^3.1.10",
     "prettier": "^3.5.3",
     "ts-jest": "^29.4.0",
